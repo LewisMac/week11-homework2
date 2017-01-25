@@ -14,6 +14,7 @@ var initialize = function(){
 
   var computeDistanceButton = document.querySelector("#compute-distance");
   computeDistanceButton.onclick = function(){
+    var textOutput = document.querySelector("#text-output")
     console.log(firstMapMarker);
     latOne = firstMapMarker.getPosition().lat;
     lngOne = firstMapMarker.getPosition().lng;
@@ -23,7 +24,10 @@ var initialize = function(){
     firstMarker = {lat: latOne, lng: lngOne};
     console.log(firstMarker)
     secondMarker = {lat: latTwo, lng: lngTwo};
-    mainMap.computeDistance(firstMarker, secondMarker)
+    var distance = mainMap.computeDistance(firstMarker, secondMarker)
+
+    textOutput.innerText = Math.round((distance/1000)*100)/100 + "km apart"
+
   }
 
   var firstLocationButton = document.querySelector("#location-one");
